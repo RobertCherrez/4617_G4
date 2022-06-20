@@ -75,6 +75,11 @@ main{
     position: relative;
     top:-185px;
     left: 10px;
+    transition: left 500ms cubic-bezier(0.175,0.885,0.320,1.275);
+    -webkit-transition: left 500ms cubic-bezier(0.175,0.885,0.320,1.275);
+    -moz-transition: left 500ms cubic-bezier(0.175,0.885,0.320,1.275);
+    -ms-transition: left 500ms cubic-bezier(0.175,0.885,0.320,1.275);
+    -o-transition: left 500ms cubic-bezier(0.175,0.885,0.320,1.275);
 }
 .container__login-register form{
     width: 100%;
