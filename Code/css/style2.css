@@ -1,0 +1,40 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    background-image: url(../images/bg2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+#main-container{
+    margin: 100px auto;
+    width: 1000px;
+}
+table{
+    text-align: left;
+    backdrop-filter: blur(15px);
+    background-color: rgba(11, 74, 249, 0.3);
+    border-collapse: collapse;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+th,td{
+    padding: 20px;
+}
+th{
+    background-color: #49A2FD;
+}
+.hijo:nth-child(even){
+    background-color: #ddd;
+}
+.hijo:hover td{
+    background-color:#3c9af9;
+    color: white;
+}

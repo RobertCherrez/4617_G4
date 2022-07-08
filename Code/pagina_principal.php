@@ -10,6 +10,7 @@
         session_destroy();
         die();
     }
+    $conexion = mysqli_connect("localhost", "root", "", "login_register_db");
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,12 +20,33 @@
         <title>Página principal</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link href="css\style2.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h3>
-            Aquí va la base de datos. Work in progress
-        </h3>
+        <div id="main-container">
+        <table>
+                <tr>
+                    <th>id</th>
+                    <th>correo</th>
+                    <th>usuario</th>
+                    <th>contraseña</th>
+                </tr>
+                <?php
+                $sql="SELECT * FROM usuarios ";
+                $result=mysqli_query($conexion,$sql);
+                while ($mostrar=mysqli_fetch_array($result)){
+                ?>
+                <tr class="hijo">
+                    <td><?php echo $mostrar['id'] ?></td>
+                    <td><?php echo $mostrar['correo'] ?></td>
+                    <td><?php echo $mostrar['usuario'] ?></td>
+                    <td><?php echo $mostrar['contrasena'] ?></td>
+                </tr>
+                <?php
+                }
+                ?>
+            </table>
+        </div>
         <a href="php/cerrar_sesion.php">Cerrar sesion</a>
     </body>
 </html>
