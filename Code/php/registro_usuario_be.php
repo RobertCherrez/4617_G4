@@ -4,8 +4,9 @@
     $usuario = $_POST['usuario'];
     $contrasena = $_POST['contrasena'];
     $contrasena = hash('sha512', $contrasena);
-    $query="INSERT INTO usuarios(correo, usuario, contrasena)
-        VALUES('$correo', '$usuario', '$contrasena')";
+    $id_cargo=2;
+    $query="INSERT INTO usuarios(correo, usuario, contrasena,id_cargo)
+        VALUES('$correo', '$usuario', '$contrasena','$id_cargo')";
     //verificar que el correo sea único
     $verificar_correo = mysqli_query($conexion, "SELECT * FROM usuarios WHERE correo='$correo'");
     if(mysqli_num_rows($verificar_correo)>0){
@@ -45,5 +46,4 @@
         ';
     }
     mysqli_close($conexion);
-    //revisión de commit
 ?>
