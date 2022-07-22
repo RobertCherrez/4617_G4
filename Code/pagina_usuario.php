@@ -11,7 +11,7 @@
     <body>
         <div>
             <p>
-                Aquí se va a ver el perfil de el empleado
+                Informacion Personal
             </p>
         </div>
     </body>

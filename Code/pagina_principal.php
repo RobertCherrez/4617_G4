@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include 'php/conexion_be.php';
     if(!isset($_SESSION['usuario'])){
         echo'
             <script>
@@ -10,7 +11,8 @@
         session_destroy();
         die();
     }
-    $conexion = mysqli_connect("localhost", "root", "", "login_register_db");
+    $sql="SELECT * FROM usuarios";
+    $query=mysqli_query($conexion,$sql);
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,32 +23,52 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css\style2.css" rel="stylesheet" type="text/css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     </head>
     <body>
-        <div id="main-container">
-        <table>
-                <tr>
-                    <th>id</th>
-                    <th>correo</th>
-                    <th>usuario</th>
-                    <th>contraseña</th>
-                </tr>
-                <?php
-                $sql="SELECT * FROM usuarios ";
-                $result=mysqli_query($conexion,$sql);
-                while ($mostrar=mysqli_fetch_array($result)){
-                ?>
-                <tr class="hijo">
-                    <td><?php echo $mostrar['id'] ?></td>
-                    <td><?php echo $mostrar['correo'] ?></td>
-                    <td><?php echo $mostrar['usuario'] ?></td>
-                    <td><?php echo $mostrar['contrasena'] ?></td>
-                </tr>
-                <?php
-                }
-                ?>
-            </table>
+        <div class="container mt-5">
+            <div class="row">
+
+                <div class="col-md-3">
+                    <h1>Ingrese un nuevo registro</h1>
+                    <form action="php/insertar.php" method="POST">
+                        <input type="text" class="form-control mb-3" name="correo" placeholder="correo">
+                        <input type="text" class="form-control mb-3" name="usuario" placeholder="usuario">
+                        <input type="password" class="form-control mb-3" name="contrasena" placeholder="contraseña">
+
+                        <input type="submit" class="btn btn-primary">
+                    </form>
+                </div>
+
+                <div class="col-md-8">
+                    <table class="table">
+                        <thead class="table-success table-striped">
+                            <tr>
+                                <th>ID</th>
+                                <th>Correo</th>
+                                <th>Usuario</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                while($row=mysqli_fetch_array($query)){
+                            ?>
+                                <tr>
+                                    <th><?php echo $row['id']?> </th>
+                                    <th><?php echo $row['correo']?> </th>
+                                    <th><?php echo $row['usuario']?> </th>
+                                    <th><a href="php/actualizar.php?id=<?php echo $row['id'] ?>" class="btn btn-info">Editar</a></th>
+                                    <th><a href="php/delete.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">Eliminar</a></th>
+                                </tr>
+                                <?php
+                                }
+                                ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <a href="php/cerrar_sesion.php">Cerrar sesion</a>
     </body>
 </html>

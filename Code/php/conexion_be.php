@@ -7,5 +7,4 @@
         echo 'no se realizó la conexion a la base de datos';
     }
     */
-    
 ?>
