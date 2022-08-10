@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include 'conexion_be.php';
+    include 'conexion.php';
     $correo = $_POST['correo'];
     $contrasena = $_POST['contrasena'];
     $contrasena = hash('sha512', $contrasena);

@@ -1,38 +1,24 @@
 <?php
-    include 'conexion_be.php';
+    include 'conexion.php';
+    $nombres = $_POST['nombres'];
+    $apellidos = $_POST['apellidos'];
+    $cedula = $_POST['cedula'];
+    $fecha_ingreso = $_POST['fecha_ingreso'];
+    $direccion = $_POST['direccion'];
+    $telefono = $_POST['telefono'];
+    $celular = $_POST['celular'];
     $correo = $_POST['correo'];
-    $usuario = $_POST['usuario'];
-    $contrasena = $_POST['contrasena'];
-    $contrasena = hash('sha512', $contrasena);
-    $id_cargo=2;
-    $query="INSERT INTO usuarios(correo, usuario, contrasena,id_cargo)
-        VALUES('$correo', '$usuario', '$contrasena','$id_cargo')";
-    $verificar_correo = mysqli_query($conexion, "SELECT * FROM usuarios WHERE correo='$correo'");
-    if(mysqli_num_rows($verificar_correo)>0){
-        echo '
-            <script>
-                alert("Este correo ya está en uso");
-                window.location= "../pagina_principal.php";
-            </script>
-            ';
-            exit();
-    }
-    //verificar que el usuario sea único
-    $verificar_usuario = mysqli_query($conexion, "SELECT * FROM usuarios WHERE usuario='$usuario'");
-    if(mysqli_num_rows($verificar_usuario)>0){
-        echo '
-            <script>
-                alert("Este usuario ya está en uso");
-                window.location= "../pagina_principal.php";
-            </script>
-            ';
-            exit();
-    }
+    $tel_referencia = $_POST['tel_referencia'];
+    $nombre_referencia = $_POST['nombre_referencia'];
+    $pc_hom = $_POST['pc_hom'];
+    $internet = $_POST['internet'];
+    $query="INSERT INTO personal(nombres,apellidos,cedula,fecha_ingreso,direccion,telefono,celular,correo,tel_referencia,nombre_referencia,pc_hom,internet)
+        VALUES('$nombres','$apellidos','$cedula','$fecha_ingreso','$direccion','$telefono','$celular','$correo','$tel_referencia','$nombre_referencia','$pc_hom','$internet')";
     $ejecutar = mysqli_query($conexion, $query);
     if($ejecutar){
         echo '
             <script>
-                alert("Usuario creado exitosamente");
+                alert("Empleado registrado exitosamente");
                 window.location= "../pagina_principal.php";
             </script>
         ';
