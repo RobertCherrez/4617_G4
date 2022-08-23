@@ -11,10 +11,6 @@
         $_SESSION['usuario']=$correo;
         header("Location: ../pagina_principal.php");
         exit;
-    }else if($filas['id_cargo']==2){
-        $_SESSION['usuario']=$correo;
-        header("Location: ../pagina_usuario.php");
-        exit;
     }
     else
     {
