@@ -94,9 +94,9 @@
             ';
             $errores++;
         }
-        for ($i=0; $i<strlen($apellidos); $i++){
-            if (strpos($permitidos, substr($apellidos,$i,1))===false){
-                echo $apellidos . " no es válido - No debe contener caracteres especiales<br>";
+        for ($i=0; $i<strlen($nombre_referencia); $i++){
+            if (strpos($permitidos, substr($nombre_referencia,$i,1))===false){
+                echo $nombre_referencia . " no es válido - No debe contener caracteres especiales<br>";
                 $errores++;
             }
         }
