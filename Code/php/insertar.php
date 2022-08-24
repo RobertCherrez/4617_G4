@@ -109,12 +109,6 @@
             echo $tel_referencia . " no es válido, debe contener 10 dígitos<br>";
             $errores++;
         }
-        if(empty($nombre_referencia)){
-            echo '
-                <p>Nombre referencia está vacío</p>
-            ';
-            $errores++;
-        }
         if(empty($pc_hom)){
             echo '
                 <p>PC hom está vacío</p>
